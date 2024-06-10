@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    {% for data in datas %}
+
+    <div class="row ">
+        <div class="col-xl-6 col-lg-6">
+            {% if( data.quote.USD.percent_change_24h >= 0) %}
+            <div class="card l-bg-green-dark">
+                {% else %}
+                <div class="card l-bg-orange-red">
+                    {% endif %}
+                    <table class="table table-borderless table">
+                        <th>1h</th>
+                        <th>24h</th>
+                        <th>7d</th>
+                        <th>30d</th>
+                        <th>60d</th>
+                        <th>90d</th>
+                        <tr>
+                            <th>
+                                <p>{{ data.quote.USD.percent_change_1h | round(4, "common")}}</p>
+                                {% if(data.quote.USD.percent_change_1h >= 0) %}
+                                <img src="{{ asset("up.png") }}"></th>
+                            {% else %}
+                            <img src="{{ asset("down.png") }}"></th>
+                            {% endif %}
+                            <th>
+                                <p>{{ data.quote.USD.percent_change_24h | round(4, "common")}}</p>
+                                {% if(data.quote.USD.percent_change_24h >= 0) %}
+                                <img src="{{ asset("up.png") }}"></th>
+                            {% else %}
+                                <img src="{{ asset("down.png") }}"></th>
+                            {% endif %}
+                            <th>
+                                <p>{{ data.quote.USD.percent_change_7d | round(4, "common")}}</p>
+                                {% if(data.quote.USD.percent_change_7d >= 0) %}
+                                <img src="{{ asset("up.png") }}"></th>
+                            {% else %}
+                                <img src="{{ asset("down.png") }}"></th>
+                            {% endif %}
+                            <th>
+                                <p>{{ data.quote.USD.percent_change_30d | round(4, "common")}}</p>
+                                {% if(data.quote.USD.percent_change_30d >= 0) %}
+                                <img src="{{ asset("up.png") }}"></th>
+                            {% else %}
+                                <img src="{{ asset("down.png") }}"></th>
+                            {% endif %}
+                            <th>
+                                <p>{{ data.quote.USD.percent_change_60d | round(4, "common")}}</p>
+                                {% if(data.quote.USD.percent_change_60d >= 0) %}
+                                <img src="{{ asset("up.png") }}"></th>
+                            {% else %}
+                                <img src="{{ asset("down.png") }}"></th>
+                            {% endif %}
+                            <th>
+                                <p>{{ data.quote.USD.percent_change_90d | round(4, "common")}}</p>
+                                {% if(data.quote.USD.percent_change_90d >= 0) %}
+                                <img src="{{ asset("up.png") }}"></th>
+                            {% else %}
+                                <img src="{{ asset("down.png") }}"></th>
+                            {% endif %}
+                        </tr>
+                    </table>
+                    <div class="card-statistic-3 p-4">
+                        <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="mb-4">
+                            <h5 class="card-title mb-0">{{ data.name }}</h5>
+                            <p>{{ data.symbol }}</p>
+                        </div>
+                        <div class="row align-items-center mb-2 d-flex">
+                            <div class="col-8">
+                                <h2 class="d-flex align-items-center mb-0">
+                                    {{ data.quote.USD.price | round(2,"common") }} $
+                                </h2>
+                            </div>
+                        </div>
+                        <a href="" style="text-decoration: none; -moz-text-decoration-color: blue">
+                            <img width="30px" src="{{ asset("detail.png") }}">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endblock %}
