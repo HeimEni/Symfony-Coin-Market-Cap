@@ -17,7 +17,7 @@ class ApiService
             'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
             ['headers' => [
                 'Accepts' => 'application/json',
-                'X-CMC_PRO_API_KEY' => '8d913e0c-a56a-45ab-af82-baf5989789fa'
+                'X-CMC_PRO_API_KEY' => 'YOUR-API-KEY',
             ],],
         );
 
